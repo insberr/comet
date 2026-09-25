@@ -37,21 +37,21 @@
               buildPhase = "cp -r $src/data $out";
             };
           };
+        }
+      );
 
-          devShells = forAllSystems (
-            system:
-            let
-              pkgs = nixpkgsFor.${system};
-            in
-            {
-              default = pkgs.mkShell {
-                nativeBuildInputs = with pkgs; [
-                  cargo
-                  rustc
-                ];
-              };
-            }
-          );
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [
+              cargo
+              rustc
+            ];
+          };
         }
       );
     };
